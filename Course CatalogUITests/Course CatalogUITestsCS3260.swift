@@ -123,19 +123,19 @@ class Course_CatalogUITestsCS3260: XCTestCase {
         var texts = cells.element(boundBy: 0).staticTexts   // CS 1030
         let cs1030 = texts.element(boundBy: 0).label
         var buttons = cells.element(boundBy: 0).buttons
-        XCTAssert(cs1030 == "CS 1030", "CS 1030 entry is missing")
+        XCTAssert(cs1030 == "CS 1030", "CS 1030 entry is missing or is not the first entry")
         XCTAssert(buttons.count > 0, "CS 1030 entry is not checked")
 
         texts = cells.element(boundBy: 1).staticTexts       // CS 3100
         let cs3100 = texts.element(boundBy: 0).label
         buttons = cells.element(boundBy: 1).buttons
-        XCTAssert(cs3100 == "CS 3100", "CS 3100 entry is missing")
+        XCTAssert(cs3100 == "CS 3100", "CS 3100 entry is missing or is not the second entry")
         XCTAssert(buttons.count > 0, "CS 3100 entry is not checked")
 
         texts = cells.element(boundBy: 2).staticTexts       // CS 3805
         let cs3805 = texts.element(boundBy: 0).label
         buttons = cells.element(boundBy: 2).buttons
-        XCTAssert(cs3805 == "CS 3805", "CS 3805 entry is missing")
+        XCTAssert(cs3805 == "CS 3805", "CS 3805 entry is missing or is not the third entry")
         XCTAssert(buttons.count > 0, "CS 3805 entry is not checked")
 
     }
@@ -153,17 +153,17 @@ class Course_CatalogUITestsCS3260: XCTestCase {
         var texts = cells.element(boundBy: 4).staticTexts   // CS 1400
         let cs1400 = texts.element(boundBy: 0).label
         var buttons = cells.element(boundBy: 4).buttons
-        XCTAssert(cs1400 == "CS 1400" && buttons.count > 0, "CS 1400 entry is not checked")
+        XCTAssert(cs1400 == "CS 1400" && buttons.count > 0, "CS 1400 entry is not checked or is not the fifth entry")
         
         texts = cells.element(boundBy: 10).staticTexts      // CS 2420
         let cs2420 = texts.element(boundBy: 0).label
         buttons = cells.element(boundBy: 10).buttons
-        XCTAssert(cs2420 == "CS 2420" && buttons.count > 0, "CS 2420 entry is not checked")
+        XCTAssert(cs2420 == "CS 2420" && buttons.count > 0, "CS 2420 entry is not checked or is not the 11th entry")
         
         texts = cells.element(boundBy: 25).staticTexts      // CS 3260
         let cs3260 = texts.element(boundBy: 0).label
         buttons = cells.element(boundBy: 25).buttons
-        XCTAssert(cs3260 == "CS 3260" && buttons.count > 0, "CS 3260 entry is not checked")
+        XCTAssert(cs3260 == "CS 3260" && buttons.count > 0, "CS 3260 entry is not checked or is not the 26th entry")
     }
     
 }
