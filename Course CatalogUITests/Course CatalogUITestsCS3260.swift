@@ -9,7 +9,7 @@
 import XCTest
 
 class Course_CatalogUITestsCS3260: XCTestCase {
-    
+    		
     var app: XCUIApplication!
     
     override func setUp() {
@@ -32,17 +32,17 @@ class Course_CatalogUITestsCS3260: XCTestCase {
     }
     
     func testLabelsButtonsAndSwitchArePresent() {
-        let headingLabel = app.staticTexts["Course Catalog"]
-        XCTAssert(headingLabel.exists)
+        let headingLabel = app.staticTexts["title"]
+        XCTAssert(headingLabel.exists, "Text with accessibility label 'title' not found")
         let switchLabel = app.staticTexts["Show Only Selected Courses"]
         XCTAssert(switchLabel.exists)
         let mySwitch = app.switches["showOnlySelectedCoursesSwitch"]
         XCTAssert(mySwitch.exists)
     }
     
-    func testTableViewIsLoaded() {
+    func testTableIsLoaded() {
         let tableView = app.tables.element(boundBy: 0)
-        XCTAssertTrue(tableView.exists, "The Course Catalog table view exists")
+        XCTAssertTrue(tableView.exists, "The Course Catalog List view exists")
         let rowCount = tableView.cells.count
         XCTAssert(rowCount == 57, "Table should have 57 rows, but found \(rowCount)")
         let cells = tableView.children(matching: .cell)
@@ -88,12 +88,17 @@ class Course_CatalogUITestsCS3260: XCTestCase {
     func testMultipleCoursesAreSelected() {
         let tableView = app.tables.element(boundBy: 0)
         let cells = tableView.children(matching: .cell)
+//        print (cells.debugDescription)
+        cells.element(boundBy: 25).tap()                    // tap cs3260 first
+                                                            // or the 1400 test fa
         cells.element(boundBy: 4).tap()                     // tap cs1400
         cells.element(boundBy: 10).tap()                    // tap cs2420
-        cells.element(boundBy: 25).tap()                    // tap cs3260
-        
+
         var texts = cells.element(boundBy: 4).staticTexts   // CS 1400
+        print (texts.debugDescription)
         let cs1400 = texts.element(boundBy: 0).label
+        let cs1400l = texts.element(boundBy: 1)
+        print ("cs 1400 long desc: <\(cs1400l.debugDescription)>")
         XCTAssert(cs1400 == "CS 1400", "CS 1400 entry is not checked")
         var l = cells.element(boundBy: 4).label
         XCTAssert(l.contains("ischecked") && !l.contains("notchecked"), "cell at offset 4 is not labeled checked")
